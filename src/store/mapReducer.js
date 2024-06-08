@@ -13,7 +13,7 @@ export const initialState = {
     },
     state: {
         title: '',
-        center: [-35.35683, 149.16538],
+        center: [],
         zoom: 17
     },
     coordinates: []

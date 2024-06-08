@@ -54,7 +54,7 @@ const RoutePage = () => {
 
     return (
         <MainCard title="Маршрут">
-            <YMaps query={{ apikey: '29294198-6cdc-4996-a870-01e89b830f3e', lang: 'en_RU' }}>
+            <YMaps query={{ apikey: '29294198-6cdc-4996-a870-01e89b830f3e', lang: 'ru-ru' }}>
                 <Map
                     {...mapOptions}
                     state={state}
