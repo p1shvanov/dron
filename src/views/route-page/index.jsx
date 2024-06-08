@@ -1,4 +1,5 @@
 // material-ui
+import { Box } from '@mui/material';
 import { YMaps, Map, Placemark, GeoObject, FullscreenControl, GeolocationControl, TypeSelector, ZoomControl } from '@pbe/react-yandex-maps';
 import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -54,33 +55,42 @@ const RoutePage = () => {
 
     return (
         <MainCard title="Маршрут">
-            <YMaps query={{ apikey: '29294198-6cdc-4996-a870-01e89b830f3e', lang: 'ru-ru' }}>
-                <Map
-                    {...mapOptions}
-                    state={state}
-                    onLoad={setMapConstructor}
-                    onBoundsChange={handleBoundsChange}
-                    instanceRef={mapRef}
-                    width={'100%'}
-                >
-                    <FullscreenControl />
-                    <Placemark color="primary" />
-                    <GeolocationControl {...geolocationOptions} />
-                    <TypeSelector options={{ float: 'right' }} />
-                    <ZoomControl options={{ float: 'right' }} />
-                    <GeoObject
-                        geometry={{
-                            type: 'LineString',
-                            coordinates
-                        }}
-                        options={{
-                            geodesic: true,
-                            strokeWidth: 5,
-                            strokeColor: '#F008'
-                        }}
-                    />
-                </Map>
-            </YMaps>
+            <Box display={{ display: 'flex', flexDirection: 'column' }}>
+                <Box sx={{ display: 'flex', flexDirection: 'row', gap: '24px', flexWrap: 'wrap' }}>
+                    <YMaps query={{ apikey: '29294198-6cdc-4996-a870-01e89b830f3e', lang: 'ru-ru' }}>
+                        <Map
+                            {...mapOptions}
+                            state={state}
+                            onLoad={setMapConstructor}
+                            onBoundsChange={handleBoundsChange}
+                            instanceRef={mapRef}
+                            width={'50%'}
+                            height={'40%'}
+                        >
+                            <FullscreenControl />
+                            <Placemark color="primary" />
+                            <GeolocationControl {...geolocationOptions} />
+                            <TypeSelector options={{ float: 'right' }} />
+                            <ZoomControl options={{ float: 'right' }} />
+                            <GeoObject
+                                geometry={{
+                                    type: 'LineString',
+                                    coordinates
+                                }}
+                                options={{
+                                    geodesic: true,
+                                    strokeWidth: 5,
+                                    strokeColor: '#F008'
+                                }}
+                            />
+                        </Map>
+                    </YMaps>
+                    <Box sx={{ background: 'grey', flex: 1, padding: '16px' }}>ПОКАЗАТЕЛИ СЮДА</Box>
+                </Box>
+                <Box sx={{ background: 'grey', flex: 1, padding: '16px' }}>
+                    <Box sx={{ height: '300px' }}>УПРАВЛЕНИЕ СЮДА</Box>
+                </Box>
+            </Box>
         </MainCard>
     );
 };
