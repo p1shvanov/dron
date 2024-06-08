@@ -10,7 +10,6 @@ export const initialState = {
     },
     geolocationOptions: {
         defaultOptions: { maxWidth: 128 },
-        defaultData: { content: 'Determine' }
     },
     state: {
         title: '',

@@ -17,15 +17,10 @@ const RoutePage = () => {
     const mapOptions = useSelector((state) => state.map.mapOptions);
     const geolocationOptions = useSelector((state) => state.map.geolocationOptions);
     const state = useSelector((state) => state.map.state);
-    console.log(state, 'state');
 
     const mapRef = useRef(null);
 
-    console.log(mapRef, 'mapRef');
-
     const dronePosition = useSelector((state) => state.dron.GLOBAL_POSITION_INT);
-
-    console.log(dronePosition, 'dronePosition');
 
     useEffect(() => {
         if (dronePosition && dronePosition.length) {
@@ -33,7 +28,6 @@ const RoutePage = () => {
                 if (item?.lon && item?.lat) {
                     const coordinatesItem = getCoordinates(item.lat, item.lon);
                     if (!coordinates.some((coord) => coord[0] === coordinatesItem[0] && coord[1] === coordinatesItem[1])) {
-                        console.log('hi');
                         dispatch({ type: SET_MAP_COORDINATES, payload: coordinatesItem });
                     }
                 }
