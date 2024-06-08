@@ -3,6 +3,7 @@ import { YMaps, Map, Placemark, GeoObject, FullscreenControl, GeolocationControl
 import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { SET_MAP_COORDINATES, SET_MAP_STATE } from 'store/actions';
+import JoystickComp from '../Controller/Controller'
 
 // project imports
 import MainCard from 'ui-component/cards/MainCard';
@@ -53,7 +54,7 @@ const RoutePage = () => {
     };
 
     return (
-        <MainCard title="Маршрут">
+        <><MainCard title="Маршрут">
             <YMaps query={{ apikey: '29294198-6cdc-4996-a870-01e89b830f3e', lang: 'ru-ru' }}>
                 <Map
                     {...mapOptions}
@@ -61,7 +62,6 @@ const RoutePage = () => {
                     onLoad={setMapConstructor}
                     onBoundsChange={handleBoundsChange}
                     instanceRef={mapRef}
-                    width={'100%'}
                 >
                     <FullscreenControl />
                     <Placemark color="primary" />
@@ -77,11 +77,11 @@ const RoutePage = () => {
                             geodesic: true,
                             strokeWidth: 5,
                             strokeColor: '#F008'
-                        }}
-                    />
+                        }} />
                 </Map>
             </YMaps>
-        </MainCard>
+
+        </MainCard><JoystickComp /></>
     );
 };
 

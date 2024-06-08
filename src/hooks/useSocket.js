@@ -40,4 +40,6 @@ export const useSocket = (onData) => {
             });
         }
     }, [onData]);
+
+    return socket
 };

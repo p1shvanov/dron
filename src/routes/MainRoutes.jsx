@@ -86,10 +86,10 @@ const MainRoutes = {
             path: 'route-page',
             element: <RoutePage />
         },
-        {
-            path: 'controller-page',
-            element: <Controller />
-        }
+        // {
+        //     path: 'controller-page',
+        //     element: <Controller />
+        // }
     ]
 };
 
