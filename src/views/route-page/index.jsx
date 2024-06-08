@@ -39,7 +39,7 @@ const RoutePage = () => {
         if (coordinates.length) dispatch({ type: SET_MAP_STATE, payload: { center: coordinates[coordinates.length - 1] } });
     }, [coordinates]);
 
-    const handleBoundsChange = (e) => {
+    const handleBoundsChange = () => {
         const newCoords = mapRef.current.getCenter();
         mapConstructor.geocode(newCoords).then((res) => {
             const nearest = res.geoObjects.get(0);

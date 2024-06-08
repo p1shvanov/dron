@@ -8,9 +8,9 @@ import ButtonBase from '@mui/material/ButtonBase';
 
 // project imports
 import LogoSection from '../LogoSection';
-import SearchSection from './SearchSection';
-import NotificationSection from './NotificationSection';
-import ProfileSection from './ProfileSection';
+// import SearchSection from './SearchSection';
+// import NotificationSection from './NotificationSection';
+// import ProfileSection from './ProfileSection';
 
 // assets
 import { IconMenu2 } from '@tabler/icons-react';

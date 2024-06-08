@@ -5,7 +5,6 @@ export const MENU_OPEN = '@customization/MENU_OPEN';
 export const SET_FONT_FAMILY = '@customization/SET_FONT_FAMILY';
 export const SET_BORDER_RADIUS = '@customization/SET_BORDER_RADIUS';
 
-
 export const SET_ATTITUDE = '@dron/SET_ATTITUDE';
 export const SET_TERRAIN_DATA = '@dron/SET_TERRAIN_DATA';
 export const SET_GLOBAL_POSITION_INT = '@dron/SET_GLOBAL_POSITION_INT';
@@ -17,7 +16,6 @@ export const SET_TERRAIN_REPORT = '@dron/SET_TERRAIN_REPORT';
 export const SET_WIND = '@dron/SET_WIND';
 export const SET_AOA_SSA = '@dron/SET_AOA_SSA';
 export const SET_ESC_TELEMETRY_1_TO_4 = '@dron/SET_ESC_TELEMETRY_1_TO_4';
-
 
 export const SET_MAP_OPTIONS = '@map/SET_MAP_OPTIONS';
 export const SET_MAP_GEO_OPTIONS = '@map/SET_MAP_GEO_OPTIONS';
