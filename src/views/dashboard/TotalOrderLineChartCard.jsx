@@ -82,20 +82,6 @@ const TotalOrderLineChartCard = ({ isLoading }) => {
             <Grid container direction="column">
               <Grid item>
                 <Grid container justifyContent="space-between">
-                  {/* <Grid item>
-                                        <Avatar
-                                            variant="rounded"
-                                            sx={{
-                                                ...theme.typography.commonAvatar,
-                                                ...theme.typography.largeAvatar,
-                                                bgcolor: 'primary.800',
-                                                color: '#fff',
-                                                mt: 1
-                                            }}
-                                        >
-                                            <LocalMallOutlinedIcon fontSize="inherit" />
-                                        </Avatar>
-                                    </Grid> */}
                   <Grid item>
                     <Button
                       disableElevation
@@ -169,6 +155,7 @@ const TotalOrderLineChartCard = ({ isLoading }) => {
               </Grid>
             </Grid>
           </Box>
+
         </MainCard>
       )}
     </>
