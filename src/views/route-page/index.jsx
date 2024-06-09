@@ -65,11 +65,8 @@ const RoutePage = () => {
         <MainCard title="Маршрут">
             <Box sx={{ display: 'flex', flexDirection: 'row', gap: '8px', flexWrap: 'wrap' }}>
                 <Box sx={{ display: 'flex', flexDirection: 'column', flex: 1, gap: '8px' }}>
-                    <TotalIncomeDarkCard />
                     <TotalIncomeLightCard />
-                    <TotalIncomeDarkCard />
                     <TotalIncomeLightCard />
-                    <TotalIncomeDarkCard />
                     <TotalIncomeLightCard />
                 </Box>
                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: '8px', alignItems: 'center', justifyContent: 'center' }}>
@@ -102,11 +99,8 @@ const RoutePage = () => {
                     <JoystickComp />
                 </Box>
                 <Box sx={{ display: 'flex', flexDirection: 'column', flex: 1, gap: '8px' }}>
-                    <TotalIncomeDarkCard />
                     <TotalIncomeLightCard />
-                    <TotalIncomeDarkCard />
                     <TotalIncomeLightCard />
-                    <TotalIncomeDarkCard />
                     <TotalIncomeLightCard />
                 </Box>
             </Box>

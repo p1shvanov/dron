@@ -18,6 +18,7 @@ import TotalIncomeCard from 'ui-component/cards/Skeleton/TotalIncomeCard';
 const CardWrapper = styled(MainCard)(({ theme }) => ({
     overflow: 'hidden',
     position: 'relative',
+    background: theme.palette.info.dark,
     '&:after': {
         content: '""',
         position: 'absolute',
