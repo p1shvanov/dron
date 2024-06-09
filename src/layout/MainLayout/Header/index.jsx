@@ -75,6 +75,15 @@ const Header = ({ handleLeftDrawerToggle }) => {
           </Avatar>
         </ButtonBase>
       </Box>
+
+      {/* header search */}
+      {/* <SearchSection /> */}
+      <Box sx={{ flexGrow: 1 }} />
+      <Box sx={{ flexGrow: 1 }} />
+
+      {/* notification & profile */}
+      {/* <NotificationSection /> */}
+      {/* <ProfileSection /> */}
       <Grid item>
         <Avatar
           variant="rounded"
@@ -121,15 +130,6 @@ const Header = ({ handleLeftDrawerToggle }) => {
           </MenuItem>
         </Menu>
       </Grid>
-
-      {/* header search */}
-      {/* <SearchSection /> */}
-      <Box sx={{ flexGrow: 1 }} />
-      <Box sx={{ flexGrow: 1 }} />
-
-      {/* notification & profile */}
-      {/* <NotificationSection /> */}
-      {/* <ProfileSection /> */}
     </>
   );
 };
