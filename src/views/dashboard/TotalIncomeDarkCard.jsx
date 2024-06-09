@@ -19,7 +19,7 @@ import TableChartOutlinedIcon from '@mui/icons-material/TableChartOutlined';
 
 // styles
 const CardWrapper = styled(MainCard)(({ theme }) => ({
-    backgroundColor: theme.palette.primary.dark,
+    backgroundColor: theme.palette.primary.main,
     color: theme.palette.primary.light,
     overflow: 'hidden',
     position: 'relative',
