@@ -33,7 +33,6 @@ const App = () => {
 
     const handleData = (messageType, data) => {
         const type = data?.[0]?.mavpackettype;
-        console.log(type, 'type');
         if (type) {
             switch (type) {
                 case 'ATTITUDE':

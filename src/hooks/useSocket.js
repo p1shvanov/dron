@@ -38,6 +38,9 @@ export const useSocket = (onData) => {
             socket.current.on('ESC_TELEMETRY_1_TO_4', (...args) => {
                 onData('data', args);
             });
+            socket.current.on('GLOBAL_POSITION_INT', (...args) => {
+                onData('data', args);
+            });
         }
     }, [onData]);
 

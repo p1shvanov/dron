@@ -16,6 +16,7 @@ const RoutePage = () => {
     const [mapConstructor, setMapConstructor] = useState(null);
     const dispatch = useDispatch();
     const coordinates = useSelector((state) => state.map.coordinates);
+    console.log(coordinates, 'coordinates')
     const mapOptions = useSelector((state) => state.map.mapOptions);
     const geolocationOptions = useSelector((state) => state.map.geolocationOptions);
     const state = useSelector((state) => state.map.state);
@@ -23,6 +24,8 @@ const RoutePage = () => {
     const mapRef = useRef(null);
 
     const dronePosition = useSelector((state) => state.dron.GLOBAL_POSITION_INT);
+
+    console.log(dronePosition, 'dronePosition');
 
     useEffect(() => {
         if (dronePosition && dronePosition.length) {
@@ -95,8 +98,8 @@ const RoutePage = () => {
                             onLoad={setMapConstructor}
                             onBoundsChange={handleBoundsChange}
                             instanceRef={mapRef}
-                            width={'50%'}
-                            height={'40%'}
+                            width={'50vh'}
+                            height={'50vh'}
                         >
                             <FullscreenControl />
                             <Placemark color="primary" />
