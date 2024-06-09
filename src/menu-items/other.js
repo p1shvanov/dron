@@ -17,16 +17,16 @@ const other = {
             url: '/route-page',
             icon: icons.IconMapRoute,
             breadcrumbs: false
-        }
-        // {
-        //   id: 'documentation',
-        //   title: 'Documentation',
-        //   type: 'item',
-        //   url: 'https://codedthemes.gitbook.io/berry/',
-        //   icon: icons.IconHelp,
+        },
+        {
+          id: 'graphPage',
+          title: 'Graphics',
+          type: 'item',
+          url: '/graphs-page',
+          icon: icons.IconHelp,
         //   external: true,
         //   target: true
-        // }
+        }
     ]
 };
 

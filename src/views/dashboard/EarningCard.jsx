@@ -168,7 +168,7 @@ const EarningCard = ({ isLoading }) => {
                                         color: 'secondary.200'
                                     }}
                                 >
-                                    Total Earning
+                                    Height
                                 </Typography>
                             </Grid>
                         </Grid>
