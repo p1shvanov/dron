@@ -9,7 +9,7 @@ export const initialState = {
         height: 400
     },
     geolocationOptions: {
-        defaultOptions: { maxWidth: 128 },
+        defaultOptions: { maxWidth: 128 }
     },
     state: {
         title: '',
