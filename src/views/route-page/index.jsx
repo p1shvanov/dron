@@ -1,12 +1,18 @@
 // material-ui
+import { Box } from '@mui/material';
 import { YMaps, Map, Placemark, GeoObject, FullscreenControl, GeolocationControl, TypeSelector, ZoomControl } from '@pbe/react-yandex-maps';
 import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { SET_MAP_COORDINATES, SET_MAP_STATE } from 'store/actions';
+import JoystickComp from '../Controller/Controller';
 
 // project imports
 import MainCard from 'ui-component/cards/MainCard';
 import { getCoordinates } from 'utils/getCoordinates';
+import TotalGrowthBarChart from 'views/dashboard/TotalGrowthBarChart';
+import TotalIncomeCard from 'ui-component/cards/Skeleton/TotalIncomeCard';
+import TotalIncomeDarkCard from 'views/dashboard/TotalIncomeDarkCard';
+import TotalIncomeLightCard from 'views/dashboard/TotalIncomeLightCard';
 
 // ==============================|| Route PAGE ||============================== //
 
@@ -14,6 +20,7 @@ const RoutePage = () => {
     const [mapConstructor, setMapConstructor] = useState(null);
     const dispatch = useDispatch();
     const coordinates = useSelector((state) => state.map.coordinates);
+    console.log(coordinates, 'coordinates');
     const mapOptions = useSelector((state) => state.map.mapOptions);
     const geolocationOptions = useSelector((state) => state.map.geolocationOptions);
     const state = useSelector((state) => state.map.state);
@@ -21,6 +28,8 @@ const RoutePage = () => {
     const mapRef = useRef(null);
 
     const dronePosition = useSelector((state) => state.dron.GLOBAL_POSITION_INT);
+
+    console.log(dronePosition, 'dronePosition');
 
     useEffect(() => {
         if (dronePosition && dronePosition.length) {
@@ -54,33 +63,53 @@ const RoutePage = () => {
 
     return (
         <MainCard title="Маршрут">
-            <YMaps query={{ apikey: '29294198-6cdc-4996-a870-01e89b830f3e', lang: 'ru-ru' }}>
-                <Map
-                    {...mapOptions}
-                    state={state}
-                    onLoad={setMapConstructor}
-                    onBoundsChange={handleBoundsChange}
-                    instanceRef={mapRef}
-                    width={'100%'}
-                >
-                    <FullscreenControl />
-                    <Placemark color="primary" />
-                    <GeolocationControl {...geolocationOptions} />
-                    <TypeSelector options={{ float: 'right' }} />
-                    <ZoomControl options={{ float: 'right' }} />
-                    <GeoObject
-                        geometry={{
-                            type: 'LineString',
-                            coordinates
-                        }}
-                        options={{
-                            geodesic: true,
-                            strokeWidth: 5,
-                            strokeColor: '#F008'
-                        }}
-                    />
-                </Map>
-            </YMaps>
+            <Box sx={{ display: 'flex', flexDirection: 'row', gap: '8px', flexWrap: 'wrap' }}>
+                <Box sx={{ display: 'flex', flexDirection: 'column', flex: 1, gap: '8px' }}>
+                    <TotalIncomeDarkCard />
+                    <TotalIncomeLightCard />
+                    <TotalIncomeDarkCard />
+                    <TotalIncomeLightCard />
+                    <TotalIncomeDarkCard />
+                    <TotalIncomeLightCard />
+                </Box>
+                <Box sx={{ display: 'flex', flexDirection: 'column', gap: '8px', alignItems: 'center', justifyContent: 'center' }}>
+                    <YMaps query={{ apikey: '29294198-6cdc-4996-a870-01e89b830f3e', lang: 'ru-ru' }}>
+                        <Map
+                            {...mapOptions}
+                            state={state}
+                            onLoad={setMapConstructor}
+                            onBoundsChange={handleBoundsChange}
+                            instanceRef={mapRef}
+                        >
+                            <FullscreenControl />
+                            <Placemark color="primary" />
+                            <GeolocationControl {...geolocationOptions} />
+                            <TypeSelector options={{ float: 'right' }} />
+                            <ZoomControl options={{ float: 'right' }} />
+                            <GeoObject
+                                geometry={{
+                                    type: 'LineString',
+                                    coordinates
+                                }}
+                                options={{
+                                    geodesic: true,
+                                    strokeWidth: 5,
+                                    strokeColor: '#F008'
+                                }}
+                            />
+                        </Map>
+                    </YMaps>
+                    <JoystickComp />
+                </Box>
+                <Box sx={{ display: 'flex', flexDirection: 'column', flex: 1, gap: '8px' }}>
+                    <TotalIncomeDarkCard />
+                    <TotalIncomeLightCard />
+                    <TotalIncomeDarkCard />
+                    <TotalIncomeLightCard />
+                    <TotalIncomeDarkCard />
+                    <TotalIncomeLightCard />
+                </Box>
+            </Box>
         </MainCard>
     );
 };
