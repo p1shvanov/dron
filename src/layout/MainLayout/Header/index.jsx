@@ -23,6 +23,9 @@ import Grid from '@mui/material/Grid';
 
 // assets
 import { IconMenu2 } from '@tabler/icons-react';
+import { initialState } from 'store/customizationReducer';
+import { initialState as intStat } from 'store/dronReducer';
+import { date } from 'yup';
 
 // ==============================|| MAIN NAVBAR / HEADER ||============================== //
 
@@ -37,6 +40,12 @@ const Header = ({ handleLeftDrawerToggle }) => {
 
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const handleGetLogs = (type, e) => {
+    console.log('wow')
+    e.preventDefault()
+    fetch(`stats/logs/:${type}/:${Date.now()}`);
   };
 
   return (
@@ -75,12 +84,12 @@ const Header = ({ handleLeftDrawerToggle }) => {
           </Avatar>
         </ButtonBase>
       </Box>
+      <Box sx={{ paddingLeft: '200px' }}>CYBER GARDEN DRONE</Box>
 
       {/* header search */}
       {/* <SearchSection /> */}
       <Box sx={{ flexGrow: 1 }} />
       <Box sx={{ flexGrow: 1 }} />
-
       {/* notification & profile */}
       {/* <NotificationSection /> */}
       {/* <ProfileSection /> */}
@@ -116,8 +125,23 @@ const Header = ({ handleLeftDrawerToggle }) => {
             horizontal: 'right'
           }}
         >
-          <MenuItem onClick={handleClose}>
-            <GetAppTwoToneIcon sx={{ mr: 1.75 }} /> Import Card
+          {Object.keys(intStat).map((item) => (
+            <MenuItem key={item} onClick={(e) => {
+              handleGetLogs(item, e);
+            }
+
+            }
+            >
+              <FileCopyTwoToneIcon sx={{ mr: 1.75 }} /> {item}
+            </MenuItem>
+          ))}
+          {/* <MenuItem
+            onClick={() => {
+              handleClose();
+              handleGetLogs();
+            }}
+          >
+            <GetAppTwoToneIcon sx={{ mr: 1.75 }} /> Save Logs
           </MenuItem>
           <MenuItem onClick={handleClose}>
             <FileCopyTwoToneIcon sx={{ mr: 1.75 }} /> Copy Data
@@ -127,7 +151,7 @@ const Header = ({ handleLeftDrawerToggle }) => {
           </MenuItem>
           <MenuItem onClick={handleClose}>
             <ArchiveTwoToneIcon sx={{ mr: 1.75 }} /> Archive File
-          </MenuItem>
+          </MenuItem> */}
         </Menu>
       </Grid>
     </>

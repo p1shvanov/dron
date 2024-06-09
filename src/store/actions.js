@@ -16,8 +16,13 @@ export const SET_TERRAIN_REPORT = '@dron/SET_TERRAIN_REPORT';
 export const SET_WIND = '@dron/SET_WIND';
 export const SET_AOA_SSA = '@dron/SET_AOA_SSA';
 export const SET_ESC_TELEMETRY_1_TO_4 = '@dron/SET_ESC_TELEMETRY_1_TO_4';
+export const SCALED_PRESSURE = '@dron/SCALED_PRESSURE';
+export const HIL_SENSOR = '@dron/HIL_SENSOR';
+export const LOCAL_POSITION_NED = '@dron/LOCAL_POSITION_NED';
+
 
 export const SET_MAP_OPTIONS = '@map/SET_MAP_OPTIONS';
 export const SET_MAP_GEO_OPTIONS = '@map/SET_MAP_GEO_OPTIONS';
 export const SET_MAP_COORDINATES = '@map/SET_MAP_COORDINATES';
 export const SET_MAP_STATE = '@map/SET_MAP_STATE';
+export const SET_VFR_HUD = '@map/SET_VFR_HUD';

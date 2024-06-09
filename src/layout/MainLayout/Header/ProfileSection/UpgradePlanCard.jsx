@@ -24,7 +24,7 @@ const UpgradePlanCard = () => {
     return (
         <Card
             sx={{
-                bgcolor: 'warning.light',
+                background: 'red',
                 my: 2,
                 overflow: 'hidden',
                 position: 'relative',

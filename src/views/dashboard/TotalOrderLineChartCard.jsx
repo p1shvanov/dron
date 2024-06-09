@@ -25,25 +25,17 @@ import { useSelector } from 'react-redux';
 const TotalOrderLineChartCard = ({
   isLoading,
   dataFilterParam,
-  firstField,
-  secondField,
-  firstGraphTitle,
-  secondGraphTitle,
+  field,
   firstGraphY,
-  secondGraphY,
-  firstGraphY2,
-  secondGraphY2
+  graphTitle,
+  graphYMax,
+  graphYMin
 }) => {
   const theme = useTheme();
 
   const voltageBatteryValue = useSelector((state) => {
     return state.dron[dataFilterParam];
   });
-  const [timeValue, setTimeValue] = React.useState(false);
-
-  const handleChangeTime = (event, newValue) => {
-    setTimeValue(newValue);
-  };
 
   return (
     <>
@@ -92,21 +84,10 @@ const TotalOrderLineChartCard = ({
                   <Grid item>
                     <Button
                       disableElevation
-                      variant={timeValue ? 'contained' : 'text'}
-                      size="small"
-                      sx={{ color: 'inherit' }}
+                      size="small"                 sx={{ color: 'inherit' }}
                       onClick={(e) => handleChangeTime(e, true)}
                     >
-                      {firstGraphTitle}
-                    </Button>
-                    <Button
-                      disableElevation
-                      variant={!timeValue ? 'contained' : 'text'}
-                      size="small"
-                      sx={{ color: 'inherit' }}
-                      onClick={(e) => handleChangeTime(e, false)}
-                    >
-                      {secondGraphTitle}
+                      {graphTitle}
                     </Button>
                   </Grid>
                 </Grid>
@@ -116,17 +97,9 @@ const TotalOrderLineChartCard = ({
                   <Grid item xs={6}>
                     <Grid container alignItems="center">
                       <Grid item>
-                        {timeValue ? (
                           <Typography sx={{ fontSize: '2.125rem', fontWeight: 500, mr: 1, mt: 1.75, mb: 0.75 }}>
-                            {firstField === 'pitch'
-                              ? +voltageBatteryValue[voltageBatteryValue.length - 1]?.[firstField].toFixed(2) * 57
-                              : +voltageBatteryValue[voltageBatteryValue.length - 1]?.[firstField].toFixed(2)}
+                            {graphTitle === 'pitch'? (voltageBatteryValue[voltageBatteryValue.length - 1]?.[field]*57).toFixed(2) : voltageBatteryValue[voltageBatteryValue.length - 1]?.[field]?.toFixed(2)}
                           </Typography>
-                        ) : (
-                          <Typography sx={{ fontSize: '2.125rem', fontWeight: 500, mr: 1, mt: 1.75, mb: 0.75 }}>
-                            {+voltageBatteryValue[voltageBatteryValue.length - 1]?.[secondField].toFixed(2)}
-                          </Typography>
-                        )}
                       </Grid>
                       <Grid item xs={12}>
                         <Typography
@@ -142,11 +115,7 @@ const TotalOrderLineChartCard = ({
                     </Grid>
                   </Grid>
                   <Grid item xs={6}>
-                    {timeValue ? (
-                      <Chart {...chartData(voltageBatteryValue, dataFilterParam, secondField, firstGraphY, firstGraphY2)} />
-                    ) : (
-                      <Chart {...chartData(voltageBatteryValue, dataFilterParam, firstField, secondGraphY, secondGraphY2)} />
-                    )}
+                      <Chart {...chartData(voltageBatteryValue, dataFilterParam, field,graphYMax,graphYMin)} />
                   </Grid>
                 </Grid>
               </Grid>

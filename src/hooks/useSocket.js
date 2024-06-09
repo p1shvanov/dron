@@ -41,6 +41,12 @@ export const useSocket = (onData) => {
             socket.current.on('GLOBAL_POSITION_INT', (...args) => {
                 onData?.('data', args);
             });
+            socket.current.on('SCALED_PRESSURE', (...args) => {
+                onData?.('data', args);
+            });
+            socket.current.on('LOCAL_POSITION_NED', (...args) => {
+                onData?.('data', args);
+            });
         }
     }, [onData]);
 

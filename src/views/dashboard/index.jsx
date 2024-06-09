@@ -38,61 +38,62 @@ const Dashboard = () => {
             <TotalOrderLineChartCard
               isLoading={isLoading}
               dataFilterParam="SYS_STATUS"
-              firstField="current_battery"
-              secondField="battery_remaining"
-              firstGraphTitle="Battety%"
-              secondGraphTitle="milliVolts"
-              firstGraphY={100}
-              firstGraphY2={0}
-              secondGraphY={4000}
-              secondGraphY2={2000}
+              field="battery_remaining"
+              graphTitle="Battety %"
+              graphYMax={100}
+              graphYMin={0}
+            />
+          </Grid>
+          <Grid item lg={4} md={6} sm={6} xs={12}>
+            <TotalOrderLineChartCard
+              isLoading={isLoading}
+              dataFilterParam="SYS_STATUS"
+              field="current_battery"
+              graphTitle="mv"
+              graphYMax={2830}
+              graphYMin={2780}
             />
           </Grid>
           <Grid item lg={4} md={6} sm={6} xs={12}>
             <TotalOrderLineChartCard
               isLoading={isLoading}
               dataFilterParam="ATTITUDE"
-              firstField="pitch"
-              secondField="pitchspeed"
-              firstGraphTitle="pitch"
-              secondGraphTitle="pitchspeed"
-              firstGraphY2={0}
-              firstGraphY={360 / 2}
-              secondGraphY={2816}
-              secondGraphY2={2000}
+              field="pitch"
+              graphTitle="pitch"
+              graphYMax={1}
+              graphYMin={0}
+            />
+          </Grid>
+          <Grid item lg={4} md={6} sm={6} xs={12}>
+            <TotalOrderLineChartCard
+              isLoading={isLoading}
+              dataFilterParam="ATTITUDE"
+              field="pitchspeed"
+              graphTitle="pitchspeed"
+              graphYMax={1}
+              graphYMin={0}
             />
           </Grid>
           <Grid item lg={4} md={6} sm={6} xs={12}>
             <TotalOrderLineChartCard
               isLoading={isLoading}
               dataFilterParam="TERRAIN_REPORT"
-              firstField="current_height"
-              secondField="terrain_height"
-              firstGraphTitle="current_height"
-              secondGraphTitle="terrain_height"
-              firstGraphY2={0}
-              firstGraphY={360}
-              secondGraphY={0}
-              secondGraphY2={1000}
+              field="current_height"
+              graphTitle="current_height"
+              graphYMax={300}
+              graphYMin={0}
             />
           </Grid>
-          {/* <Grid item lg={4} md={12} sm={12} xs={12}>
-                        <Grid container spacing={gridSpacing}>
-                            <Grid item sm={6} xs={12} md={6} lg={12}>
-                                <TotalIncomeDarkCard isLoading={isLoading} />
-                            </Grid>
-                            <Grid item sm={6} xs={12} md={6} lg={12}>
-                                <TotalIncomeLightCard
-                                    {...{
-                                        isLoading: isLoading,
-                                        total: 203,
-                                        label: 'Total Income',
-                                        icon: <StorefrontTwoToneIcon fontSize="inherit" />
-                                    }}
-                                />
-                            </Grid>
-                        </Grid>
-                    </Grid> */}
+          <Grid item lg={4} md={6} sm={6} xs={12}>
+            <TotalOrderLineChartCard
+              isLoading={isLoading}
+              dataFilterParam="TERRAIN_REPORT"
+              field="terrain_height"
+              graphTitle="terrain_height"
+              graphYMax={600}
+              graphYMin={520}
+            />
+          </Grid>
         </Grid>
       </Grid>
       <Grid item xs={12}>

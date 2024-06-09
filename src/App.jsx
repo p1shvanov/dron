@@ -24,7 +24,10 @@ import {
     SET_SYS_STATUS,
     SET_TERRAIN_DATA,
     SET_TERRAIN_REPORT,
-    SET_WIND
+    SET_WIND,
+    SET_VFR_HUD,
+    SCALED_PRESSURE,
+    LOCAL_POSITION_NED
 } from 'store/actions';
 
 const App = () => {
@@ -67,6 +70,15 @@ const App = () => {
                     break;
                 case 'ESC_TELEMETRY_1_TO_4':
                     dispatch({ type: SET_ESC_TELEMETRY_1_TO_4, payload: data[0] });
+                    break;
+                case 'SET_VFR_HUD':
+                    dispatch({ type: SET_VFR_HUD, payload: data[0] });
+                    break;
+                case 'SCALED_PRESSURE':
+                    dispatch({ type: SCALED_PRESSURE, payload: data[0] });
+                    break;
+                case 'LOCAL_POSITION_NED':
+                    dispatch({ type: LOCAL_POSITION_NED, payload: data[0] });
                     break;
                 default:
                     break;

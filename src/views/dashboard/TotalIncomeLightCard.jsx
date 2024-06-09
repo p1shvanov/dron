@@ -13,6 +13,7 @@ import Typography from '@mui/material/Typography';
 // project imports
 import MainCard from 'ui-component/cards/MainCard';
 import TotalIncomeCard from 'ui-component/cards/Skeleton/TotalIncomeCard';
+import { useSelector } from 'react-redux';
 
 // styles
 const CardWrapper = styled(MainCard)(({ theme }) => ({
@@ -43,9 +44,15 @@ const CardWrapper = styled(MainCard)(({ theme }) => ({
 
 // ==============================|| DASHBOARD - TOTAL INCOME LIGHT CARD ||============================== //
 
-const TotalIncomeLightCard = ({ isLoading, total, icon, label }) => {
-    const theme = useTheme();
+const TotalIncomeLightCard = ({ isLoading, value,objType, icon, label }) => {
+const dataValue = useSelector((state) => state.dron?.[objType]);
 
+const getLonLatVal  = () =>{
+    if(value === 'lon' || value === 'lat'){
+        return (dataValue?.at(-1)?.[value]/1e7).toFixed(2);
+    }
+    else return dataValue?.at(-1)?.[value].toFixed(2);
+}
     return (
         <>
             {isLoading ? (
@@ -54,30 +61,11 @@ const TotalIncomeLightCard = ({ isLoading, total, icon, label }) => {
                 <CardWrapper border={false} content={false}>
                     <Box sx={{ p: 2 }}>
                         <List sx={{ py: 0 }}>
-                            <ListItem alignItems="center" disableGutters sx={{ py: 0 }}>
-                                <ListItemAvatar>
-                                    <Avatar
-                                        variant="rounded"
-                                        sx={{
-                                            ...theme.typography.commonAvatar,
-                                            ...theme.typography.largeAvatar,
-                                            bgcolor: 'warning.light',
-                                            color: label === 'Meeting attends' ? 'error.dark' : 'warning.dark'
-                                        }}
-                                    >
-                                        {icon}
-                                    </Avatar>
-                                </ListItemAvatar>
-                                <ListItemText
-                                    sx={{ py: 0, mt: 0.45, mb: 0.45 }}
-                                    primary={<Typography variant="h4">${total}k</Typography>}
-                                    secondary={
-                                        <Typography variant="subtitle2" sx={{ color: 'grey.500', mt: 0.5 }}>
-                                            {label}
+                                        <Typography variant="subtitle2" sx={{ color: 'white', mt: 0.5 }}>
+                                            {label} : {getLonLatVal()}
                                         </Typography>
-                                    }
-                                />
-                            </ListItem>
+                                
+                            {/* </ListItem> */}
                         </List>
                     </Box>
                 </CardWrapper>

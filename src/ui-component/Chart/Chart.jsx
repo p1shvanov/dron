@@ -3,11 +3,11 @@ import { useEffect, useRef } from 'react';
 import { getDataset } from '../../utils/getDataSet';
 import { getLabels } from '../../utils/getLabels';
 
-// ChartJS.register(...registerables);
+ChartJS.register(...registerables);
 
-export const Chart = ({ socketData, dataType, field }) => {
+export const Chart = ({ socketData, dataType, field, field2, field3}) => {
 const chartRef = useRef(null);
-
+const arr = [field, field2, field3]
 const options = {
   responsive: true,
   plugins: {
@@ -26,15 +26,27 @@ const options = {
   },
   responsiveAnimationDuration: 0
 };
+console.log(socketData,'socketData')
 
 const data = {
   labels: getLabels(socketData),
   datasets: [
     {
-      label: `${dataType} ${field}`,
-      data: getDataset(socketData, `${dataType}`, `${field}`),
+      label: `${dataType} ${field}`, // Template literals for string concatenation
+      data: getDataset(socketData, dataType, field), // Pass variables directly
       backgroundColor: '#fa090c'
-    }
+    },
+    field2 ? {
+      label: ` ${field2}`,
+      data: getDataset(socketData, dataType, field2),
+      backgroundColor: '#fa090c'
+    } : {},
+    field3 ? {
+      label: ` ${field3}`,
+      data: getDataset(socketData, dataType, field3),
+      backgroundColor: '#fa090c'
+    } : {},
+
   ]
 };
 
