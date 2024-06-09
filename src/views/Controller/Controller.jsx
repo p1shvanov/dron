@@ -19,7 +19,6 @@ function JoystickComp() {
     };
 
     const handleStopDirection = (e) => {
-        console.log('StopDirection:', e);
         socket.current.emit('joystickStopDirection', {
             direction: e.direction,
             distance: e.distance,
@@ -30,7 +29,6 @@ function JoystickComp() {
     };
 
     const handleStartDirection = (e) => {
-        console.log('StartDirection:', e);
         socket.current.emit('joystickStartDirection', {
             direction: e.direction,
             distance: e.distance,
@@ -51,7 +49,6 @@ function JoystickComp() {
     };
 
     const handleMoveAltitude = (e) => {
-        console.log('MoveAltitude:', e);
         socket.current.emit('joystickMoveAltitude', {
             direction: e.direction,
             distance: e.distance,
@@ -62,7 +59,6 @@ function JoystickComp() {
     };
 
     const handleStopAltitude = (e) => {
-        console.log('StopAltitude:', e);
         socket.current.emit('joystickStopAltitude', {
             direction: e.direction,
             distance: e.distance,
