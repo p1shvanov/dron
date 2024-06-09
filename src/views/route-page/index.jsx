@@ -1,5 +1,5 @@
 // material-ui
-import { Box } from '@mui/material';
+import { Box, Grid } from '@mui/material';
 import { YMaps, Map, Placemark, GeoObject, FullscreenControl, GeolocationControl, TypeSelector, ZoomControl } from '@pbe/react-yandex-maps';
 import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -62,48 +62,54 @@ const RoutePage = () => {
     };
 
     return (
-        <MainCard title="Маршрут">
-            <Box sx={{ display: 'flex', flexDirection: 'row', gap: '8px', flexWrap: 'wrap' }}>
-                <Box sx={{ display: 'flex', flexDirection: 'column', flex: 1, gap: '8px' }}>
-                    <TotalIncomeLightCard />
-                    <TotalIncomeLightCard />
-                    <TotalIncomeLightCard />
-                </Box>
-                <Box sx={{ display: 'flex', flexDirection: 'column', gap: '8px', alignItems: 'center', justifyContent: 'center' }}>
-                    <YMaps query={{ apikey: '29294198-6cdc-4996-a870-01e89b830f3e', lang: 'ru-ru' }}>
-                        <Map
-                            {...mapOptions}
-                            state={state}
-                            onLoad={setMapConstructor}
-                            onBoundsChange={handleBoundsChange}
-                            instanceRef={mapRef}
-                        >
-                            <FullscreenControl />
-                            <Placemark color="primary" />
-                            <GeolocationControl {...geolocationOptions} />
-                            <TypeSelector options={{ float: 'right' }} />
-                            <ZoomControl options={{ float: 'right' }} />
-                            <GeoObject
-                                geometry={{
-                                    type: 'LineString',
-                                    coordinates
-                                }}
-                                options={{
-                                    geodesic: true,
-                                    strokeWidth: 5,
-                                    strokeColor: '#F008'
-                                }}
-                            />
-                        </Map>
-                    </YMaps>
-                    <JoystickComp />
-                </Box>
-                <Box sx={{ display: 'flex', flexDirection: 'column', flex: 1, gap: '8px' }}>
-                    <TotalIncomeLightCard />
-                    <TotalIncomeLightCard />
-                    <TotalIncomeLightCard />
-                </Box>
-            </Box>
+        <MainCard title="Управление">
+            <Grid container display={'flex'} flex={1} gap={3}>
+                <Grid item flex={1}>
+                    <Box sx={{ display: 'flex', flexDirection: 'column', flex: 1, gap: '8px' }}>
+                        <TotalIncomeLightCard />
+                        <TotalIncomeLightCard />
+                        <TotalIncomeLightCard />
+                    </Box>
+                </Grid>
+                <Grid item>
+                    <Box sx={{ display: 'flex', flexDirection: 'column', gap: '8px', alignItems: 'center', justifyContent: 'center' }}>
+                        <YMaps query={{ apikey: '29294198-6cdc-4996-a870-01e89b830f3e', lang: 'ru-ru' }}>
+                            <Map
+                                {...mapOptions}
+                                state={state}
+                                onLoad={setMapConstructor}
+                                onBoundsChange={handleBoundsChange}
+                                instanceRef={mapRef}
+                            >
+                                <FullscreenControl />
+                                <Placemark color="primary" />
+                                <GeolocationControl {...geolocationOptions} />
+                                <TypeSelector options={{ float: 'right' }} />
+                                <ZoomControl options={{ float: 'right' }} />
+                                <GeoObject
+                                    geometry={{
+                                        type: 'LineString',
+                                        coordinates
+                                    }}
+                                    options={{
+                                        geodesic: true,
+                                        strokeWidth: 5,
+                                        strokeColor: '#F008'
+                                    }}
+                                />
+                            </Map>
+                        </YMaps>
+                        <JoystickComp />
+                    </Box>
+                </Grid>
+                <Grid item flex={1}>
+                    <Box sx={{ display: 'flex', flexDirection: 'column', flex: 1, gap: '8px' }}>
+                        <TotalIncomeLightCard />
+                        <TotalIncomeLightCard />
+                        <TotalIncomeLightCard />
+                    </Box>
+                </Grid>
+            </Grid>
         </MainCard>
     );
 };
